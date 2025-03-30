@@ -1,3 +1,3 @@
-bin/App.class
+bin/*
 src/App.class
-.vscode/settings.json
+.vscode/*
