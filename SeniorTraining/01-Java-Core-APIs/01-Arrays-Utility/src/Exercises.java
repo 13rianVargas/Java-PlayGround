@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 /**
  * ══════════════════════════════════════════════════════════
@@ -41,7 +43,11 @@ public class Exercises {
      * @return true si k existe en ints, false en caso contrario
      */
     static boolean existsLinear(int[] ints, int k) {
-        // TODO: implementar
+        for (int i = 0; i < ints.length; i++) {
+            if (ints[i] == k) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -55,8 +61,7 @@ public class Exercises {
      * @return true si k existe en ints, false en caso contrario
      */
     static boolean existsBinary(int[] ints, int k) {
-        // TODO: implementar
-        return false;
+        return Arrays.binarySearch(ints, k) >= 0 ? true : false;
     }
 
     // ───────────────────────────────────────────────────────────────────
@@ -76,8 +81,28 @@ public class Exercises {
      * @return array de los k mayores, en orden descendente
      */
     static int[] topK(int[] arr, int k) {
-        // TODO: implementar
-        return new int[0];
+        // 1. Lo ordeno
+        Arrays.sort(arr);
+
+        // 2. Creo Array de tamaño k
+        int[] newArr = new int[k];
+
+        // 3. Lleno newArr con los últimos k elementos de arr, en orden inverso
+        for (int i = 0; i < k; i++) {
+            // Ejemplo si arr= { 3, 1, 4, 1, 5, 9, 2, 6 } y k= 3
+            // newArry sorted = { 1, 1, 2, 3, 4, 5, 6, 9 }
+            newArr[i] = arr[arr.length
+                    // Valor: 8 constantemente
+                    - 1
+                    // Valor: 7 constantemente (index)
+                    - i
+            // Index: 0, luego 1, luego 2
+            ];
+            // Resultado: 8-1-0=7 → 9, luego 8-1-1=6 → 6, luego 8-1-2=5 → 5
+            // El resultado es el index del último elemento, luego el penúltimo, luego el
+            // antepenúltimo del array ordenado.
+        }
+        return newArr;
     }
 
     // ───────────────────────────────────────────────────────────────────
@@ -101,8 +126,8 @@ public class Exercises {
      * @return índice donde insertar para mantener orden ascendente
      */
     static int insertionPosition(int[] arr, int target) {
-        // TODO: implementar
-        return 0;
+        int ans = Arrays.binarySearch(arr, target);
+        return ans < 0 ? -(ans + 1) : ans;
     }
 
     // ───────────────────────────────────────────────────────────────────
@@ -181,8 +206,10 @@ public class Exercises {
         System.out.println(median(new int[] { 7 })); // 7.0
 
         System.out.println("\n═══ EJERCICIO 5: mergeSorted ═══");
-        System.out.println(Arrays.toString(mergeSorted(new int[] { 1, 3, 5 }, new int[] { 2, 4, 6 }))); // [1, 2, 3, 4, 5, 6]
-        System.out.println(Arrays.toString(mergeSorted(new int[] { 1, 1, 3 }, new int[] { 2, 3, 5 }))); // [1, 1, 2, 3, 3, 5]
+        System.out.println(Arrays.toString(mergeSorted(new int[] { 1, 3, 5 }, new int[] { 2, 4, 6 }))); // [1, 2, 3, 4,
+                                                                                                        // 5, 6]
+        System.out.println(Arrays.toString(mergeSorted(new int[] { 1, 1, 3 }, new int[] { 2, 3, 5 }))); // [1, 1, 2, 3,
+                                                                                                        // 3, 5]
         System.out.println(Arrays.toString(mergeSorted(new int[0], new int[] { 1, 2 }))); // [1, 2]
     }
 }
