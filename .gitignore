@@ -3,3 +3,5 @@ src/App.class
 .vscode/*
 
 .DS_Store
+
+*.class
