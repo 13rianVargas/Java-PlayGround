@@ -14,23 +14,13 @@ public class Exercises {
      * Calcula base^exponent usando recursión.
      * Usa el método de exponenciación rápida:
      *   - base^0 = 1
-    
      *   - base^n = base^(n/2) * base^(n/2)       si n par
      *   - base^n = base * base^(n/2) * base^(n/2) si n impar
-            
-            
-            
+     *
      * Ejemplo: power(2, 10) → 1024
-        
-
-        
-        
-
-        ic static long power(long base, int exponent) {
-        
-
+     */
+    public static long power(long base, int exponent) {
         // TODO: Recursión con exponenciación rápida O(log n)
-        
         throw new UnsupportedOperationException("Implementa este método.");
     }
 
@@ -44,12 +34,12 @@ public class Exercises {
      * Ejemplo: n=1 → ["()"]
      */
     public static List<String> generateParentheses(int n) {
-        // TODO: Backtracking con contadores de op
-      
-     * 
+        // TODO: Backtracking con contadores de open y close
+        throw new UnsupportedOperationException("Implementa este método.");
+    }
 
     /**
-            
+     * EJERCICIO 3: Aplanar lista anidada.
      *
      * Dada una lista que puede contener enteros o listas anidadas,
      * retorna todos los enteros en una lista plana.
@@ -58,12 +48,10 @@ public class Exercises {
      *
      * Tip: Usa instanceof para verificar el tipo.
      */
-    public static List en(List<Object> nested) {
-        // TODO: Recursión — si es teger, agregar; si es List, recursión
-     * 
-        throw new UnsupportedOpe nException("Implementa este método.");
-    } 
-    
+    public static List<Integer> flatten(List<Object> nested) {
+        // TODO: Recursión — si es Integer, agregar; si es List, recursión
+        throw new UnsupportedOperationException("Implementa este método.");
+    }
 
     /**
      * EJERCICIO 4: Palíndromo recursivo.
@@ -75,14 +63,14 @@ public class Exercises {
      * Ejemplo: "race a car"                     → false
      */
     public static boolean isPalindromeRecursive(String s) {
-    
+        // TODO: Limpiar string, luego comparar extremos recursivamente
+        throw new UnsupportedOperationException("Implementa este método.");
+    }
 
-    
     /**
-     
-
-    * Dadoun 
-
+     * EJERCICIO 5: Combinaciones de letras de un teléfono.
+     *
+     * Dado un string de dígitos, retorna todas las combinaciones
      * de letras posibles (como un teléfono T9).
      *
      * Mapeo: 2→abc, 3→def, 4→ghi, 5→jkl, 6→mno, 7→pqrs, 8→tuv, 9→wxyz
@@ -97,7 +85,6 @@ public class Exercises {
 
     // ─── Runner ───
     public static void main(String[] args) {
-    
         System.out.println("=== RECURSIÓN — Ejercicios ===\n");
 
         try {
@@ -108,19 +95,13 @@ public class Exercises {
             var r2 = generateParentheses(3);
             System.out.println("Ej2: " + r2.size() + " combinaciones" + (r2.size() == 5 ? " ✅" : " ❌"));
         } catch (Exception e) { System.out.println("Ej2: ⬜ No implementado"); }
- 
+
         try {
             List<Object> nested = List.of(1, List.of(2, 3), List.of(4, List.of(5)));
-         var r3 = flatten(nested);
-        
+            var r3 = flatten(nested);
+            System.out.println("Ej3: " + r3 + (r3.equals(List.of(1, 2, 3, 4, 5)) ? " ✅" : " ❌"));
+        } catch (Exception e) { System.out.println("Ej3: ⬜ No implementado"); }
 
-       System.out.println("Ej3: " + r3 + (r3.equals(List.of(1, 2, 3, 4, 5)) ? " ✅" : " ❌"));
-        
-
-     catch (Exception e) { System.out.println("Ej3: ⬜ No implementado"); }
-
-
-    
         try {
             boolean r4 = isPalindromeRecursive("A man, a plan, a canal: Panama");
             System.out.println("Ej4: " + r4 + (r4 ? " ✅" : " ❌"));

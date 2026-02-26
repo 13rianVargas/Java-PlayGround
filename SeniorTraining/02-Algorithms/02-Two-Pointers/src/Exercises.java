@@ -47,7 +47,7 @@ public class Exercises {
     // ─────────────────────────────────────────────────────────────────────
     static boolean isPalindrome(String s) {
         // TODO
-            
+        return false;
     }
 
     // ─────────────────────────────────────────────────────────────────────
@@ -56,12 +56,11 @@ public class Exercises {
     // Dado un array ORDENADO, elimina los duplicados IN-PLACE y retorna
     // la cantidad de elementos únicos. No importa lo que quede después.
     //
-    // Ejemplo: [1,1,2 rray queda [1,2,...])
-    // Ejemplo: [0,0,1,1,1,2,2,3,3  → 5
-     * 
-    // 
-    // 💡 slow pointer para posi a escribir,
-    //    fast pointer para recorer. Cuando fast != arr[slow], avanza slow y copia.
+    // Ejemplo: [1,1,2] → 2 (array queda [1,2,...])
+    // Ejemplo: [0,0,1,1,1,2,2,3,3,4] → 5
+    //
+    // 💡 slow pointer para posición a escribir,
+    //    fast pointer para recorrer. Cuando fast != arr[slow], avanza slow y copia.
     // ─────────────────────────────────────────────────────────────────────
     static int removeDuplicates(int[] arr) {
         // TODO

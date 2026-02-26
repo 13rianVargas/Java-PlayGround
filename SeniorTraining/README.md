@@ -1,10 +1,10 @@
-# 🏆 SeniorTraining — Java Senior Technical Tests
+# 🏆 SeniorTraining — Java Senior Interview Prep
 
-Preparación completa para pruebas técnicas de nivel Senior en Java, enfocada en el **sector financiero**. Cada módulo combina teoría, ejemplos con código real y ejercicios evaluativos que replican el formato de CodinGame y HackerRank.
+Curso práctico para dominar los métodos y patrones exóticos de Java que aparecen en entrevistas técnicas Senior del sector financiero. Formato CodinGame / HackerRank: **lee la teoría → practica los ejercicios → valida con las soluciones**.
 
 ---
 
-## 🗺️ Roadmap del Tutorial
+## 🗺️ Roadmap
 
 | #   | Módulo                                               | Tiempo Estimado     | Prioridad  |
 | --- | ---------------------------------------------------- | ------------------- | ---------- |
@@ -18,6 +18,21 @@ Preparación completa para pruebas técnicas de nivel Senior en Java, enfocada e
 | 08  | [Mock Exams](08-Mock-Exams/)                         | 4.5 horas (3×90min) | 🔴 Crítica |
 
 **Tiempo total estimado:** 22–30 horas de estudio enfocado
+
+---
+
+## 📁 Estructura de cada módulo
+
+```
+módulo/
+├── src/
+│   ├── Main.java        ← Teoría ejecutable con ejemplos anotados
+│   ├── Exercises.java   ← Ejercicios con TODO (tú implementas)
+│   └── Solutions.java   ← Soluciones anotadas (mira DESPUÉS)
+└── README.md            ← Contexto y orden de estudio
+```
+
+> Los módulos 04, 06 y 08 usan **Maven + JUnit 5** para tests automatizados.
 
 ---
 
@@ -121,5 +136,4 @@ mvn test -Dtest=ThresholdTest         # solo una clase de test
 
 ---
 
-_Creado para preparación de pruebas Senior Java — Sector Financiero_
-_Java 17 · Maven · JUnit 5 · Stack: CodinGame / HackerRank format_
+_Java 17 · Maven · JUnit 5 · Formato: CodinGame / HackerRank_

@@ -14,23 +14,14 @@ public class Exercises {
     // una vez. Si no existe tal carácter, retorna '\0'.
     //
     // Ejemplo: "aabbcdeef" → 'c'
-    
     // Ejemplo: "aabb"       → '\0' (no existe carácter único)
     //
-            uencias, luego recorre el
-            encontrar el primero con frecue
-            l orden de inserción?
-    // ──────────────────────────────────────────────────────────────
-        ─
-
-        
-        
-
-        ic char firstUniqueChar(String s) {
-        
-
+    // 💡 Pista: Cuenta frecuencias, luego recorre el string para
+    //    encontrar el primero con frecuencia 1.
+    //    ¿Qué estructura preserva el orden de inserción?
+    // ─────────────────────────────────────────────────────────────────────
+    public static char firstUniqueChar(String s) {
         // TODO
-        
         return '\0';
     }
 
@@ -44,25 +35,22 @@ public class Exercises {
     // Ejemplo: ["apple","banana","apple","cherry","banana","apple"], k=2
     //   → ["apple", "banana"]
     //
-    // 💡 Pista: Cuenta con HashMap, luego ordena 
-       
-     *       .reversed().thenComparing()
+    // 💡 Pista: Cuenta con HashMap, luego ordena con
+    //    Comparator.comparingByValue().reversed().thenComparing()
     // ─────────────────────────────────────────────────────────────────────
     static List<String> topKFrequent(List<String> words, int k) {
-            
+        // TODO
         return Collections.emptyList();
     }
 
     // ─────────────────────────────────────────────────────────────────────
     // EJERCICIO 3 — Rango de puntajes
-    // 
-    // Dado un conjunto de nombre→puntaje y dos enteros min y max (inclusive),
     //
-    // retorna los nom  tienen puntaje dentro de [min, max],
-    // ordenados por puntaje desce nte.
-     * 
-    // 
-    // Ejemplo: {"Alice":85, "Bo , "Charlie":78, "Diana":95, "Eve":68}, [80, 93]
+    // Dado un conjunto de nombre→puntaje y dos enteros min y max (inclusive),
+    // retorna los nombres que tienen puntaje dentro de [min, max],
+    // ordenados por puntaje descendente.
+    //
+    // Ejemplo: {"Alice":85, "Bob":92, "Charlie":78, "Diana":95, "Eve":68}, [80, 93]
     //   → ["Bob", "Alice"]
     //
     // 💡 Pista: TreeMap tiene tailMap(min) y subMap(min, max) para rangos eficientes.
@@ -73,16 +61,14 @@ public class Exercises {
         // TODO
         return Collections.emptyList();
     }
-    
 
-    
-
+    // ─────────────────────────────────────────────────────────────────────
+    // EJERCICIO 4 — Paréntesis balanceados
+    //
     // Dado un String con paréntesis, corchetes y llaves, retorna true si
     // están correctamente balanceados, false en caso contrario.
-    /
-
-    / Ejemlo:
-
+    //
+    // Ejemplo: "()[]{}" → true
     // Ejemplo: "([)]"     → false
     // Ejemplo: "{[]"      → false
     // Ejemplo: ""         → true
@@ -94,7 +80,7 @@ public class Exercises {
         // TODO
         return false;
     }
- 
+
     // ─────────────────────────────────────────────────────────────────────
     // EJERCICIO 5 — Mediana mantenida con dos heaps
     //
@@ -113,14 +99,8 @@ public class Exercises {
     //
     // ⏱️ addNumber debe ser O(log n), getMedian debe ser O(1)
     //
-
-    
-    // 
-
-     Pista: divide el stream en dos heaps:
-    //  
-
-    - maxHeap (mitad inferior): PriorityQueue reverseOrder
+    // 💡 Pista: divide el stream en dos heaps:
+    //   - maxHeap (mitad inferior): PriorityQueue reverseOrder
     //   - minHeap (mitad superior): PriorityQueue natural
     //   Mantén |maxHeap.size() - minHeap.size()| <= 1
     //   La mediana es la raíz del heap mayor (si impares) o el promedio (si pares).
@@ -146,7 +126,8 @@ public class Exercises {
         System.out.println(firstUniqueChar("aabbcdeef"));  // c
         System.out.println(firstUniqueChar("aabb"));       // \0
         System.out.println(firstUniqueChar("z"));          // z
-System.out.println("\n═══ Ejercicio 2: topKFrequent ═══");
+
+        System.out.println("\n═══ Ejercicio 2: topKFrequent ═══");
         System.out.println(topKFrequent(Arrays.asList("apple","banana","apple","cherry","banana","apple"), 2));
         // [apple, banana]
 
