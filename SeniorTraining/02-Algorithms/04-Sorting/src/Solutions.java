@@ -30,7 +30,7 @@ public class Solutions {
      * Complejidad: O(n log K) — más eficiente que O(n log n) sort
      * Clave: Min-heap de tamaño K. Al final, peek() es el K-th más grande.
      */
-    public atic int kthLargest(int[] arr, int k) {
+    public static int kthLargest(int[] arr, int k) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         for (int val : arr) {
             minHeap.offer(val);
@@ -45,7 +45,6 @@ public class Solutions {
      * EJERCICIO 3: Merge de arrays ordenados.
      *
      * Complejidad: O(n+m) tiempo, O(n+m) espacio
-    
      * Clave: Two pointers, uno en cada array. Comparar y avanzar el menor.
      *
      * NOTA SENIOR: Este es el mismo algoritmo que usa MergeSort internamente.
@@ -112,7 +111,7 @@ public class Solutions {
             new Product("A", "X", 10, 3),
             new Product("C", "Y", 20, 1)
         );
-        System.out.println("Ej1: " + sortByPriceAndName(products));
+        System.out.println("Ej1: " + sortByPriceThenName(products));
 
         System.out.println("Ej2: " + kthLargest(new int[]{3, 2, 1, 5, 6, 4}, 2));
         System.out.println("Ej3: " + Arrays.toString(
@@ -123,19 +122,3 @@ public class Solutions {
                 new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}}));
     }
 }
-            
-        
-
-        
-            
-        
-                
-                
-            
-
-            
-
-            
-                
-                
-            

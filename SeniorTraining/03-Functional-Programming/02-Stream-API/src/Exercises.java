@@ -14,24 +14,16 @@ public class Exercises {
 
     
     static List<Transaction> transactions = List.of(
-        new Transaction("T001", "CREDIT",  1500.00, "USD", true)
-    ,
+        new Transaction("T001", "CREDIT",  1500.00, "USD", true),
         new Transaction("T002", "DEBIT",    200.50, "USD", true),
         new Transaction("T003", "CREDIT",  3000.00, "EUR", true),
-            500.00, "USD", false),
-            800.00, "USD", true),
-            200.00, "EUR", true),
+        new Transaction("T004", "DEBIT",    500.00, "USD", false),
+        new Transaction("T005", "CREDIT",   800.00, "USD", true),
+        new Transaction("T006", "DEBIT",    200.00, "EUR", true),
         new Transaction("T007", "DEBIT",   9000.00, "USD", false),
-        
-
         new Transaction("T008", "CREDIT",   450.00, "COP", true),
-        
-
         new Transaction("T009", "TRANSFER", 300.00, "USD", true),
-        
-
         new Transaction("T010", "CREDIT",  7500.00, "EUR", true)
-        
     );
 
     static List<Employee> employees = List.of(
@@ -49,7 +41,7 @@ public class Exercises {
     // ─────────────────────────────────────────────────────────────────────
     // E1 — Suma de transacciones exitosas en USD
     //
-            nsacciones que son:
+    // Retorna la suma de las transacciones que son:
     //   - exitosas (success = true)
     //   - en USD
     //
@@ -59,9 +51,8 @@ public class Exercises {
     // ─────────────────────────────────────────────────────────────────────
     static double totalSuccessfulUSD() {
         // TODO 
-        return 0.0; 
-     * 
-    } 
+        return 0.0;
+    }
  
     // ─────────────────────────────────────────────────────────────────────
     // E2 — IDs de transacciones fallidas, ordenados
@@ -75,7 +66,6 @@ public class Exercises {
     static List<String> failedTransactionIds() {
         // TODO
         return Collections.emptyList();
-    
     }
 
     // ─────────────────────────────────────────────────────────────────────

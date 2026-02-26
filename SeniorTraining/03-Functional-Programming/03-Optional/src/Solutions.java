@@ -30,7 +30,7 @@ public class Solutions {
      * EJERCICIO 1: Buscar por ID.
      * Patrón estándar: stream + filter + findFirst → Optional
      */
-    public atic Optional<Customer> findCustomer(String id) {
+    public static Optional<Customer> findCustomer(String id) {
         return CUSTOMERS.stream()
                 .filter(c -> c.id().equals(id))
                 .findFirst();
@@ -97,31 +97,3 @@ public class Solutions {
         System.out.println("Ej5: " + activeCustomerNames(List.of("C1", "C2", "C99")));    // [Alice, Bob]
     }
 }
-
-            
-        
-
-        
-            
-         
-    
-            
-        
-
-        
-            
-        
-
-        
-            
-        
-                
-                
-            
-
-            
-
-            
-                
-                
-            

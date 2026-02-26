@@ -94,15 +94,15 @@ public class Exercises {
         } catch (Exception e) { System.out.println("Ej1: ⬜ No implementado"); }
 
         // Test 2
-       y {
-         int r2 = kthLargest(new int[]{3, 2, 1, 5, 6, 4}, 2);
+        try {
+            int r2 = kthLargest(new int[]{3, 2, 1, 5, 6, 4}, 2);
             System.out.println("Ej2: " + r2 + (r2 == 5 ? " ✅" : " ❌ esperado 5"));
         } catch (Exception e) { System.out.println("Ej2: ⬜ No implementado"); }
- 
-        Test 3
+
+        // Test 3
         try {
             int[] r3 = mergeSortedArrays(new int[]{1, 3, 5}, new int[]{2, 4, 6});
-         System.out.println("Ej3: " + Arrays.toString(r3)
+            System.out.println("Ej3: " + Arrays.toString(r3)
                 + (Arrays.equals(r3, new int[]{1, 2, 3, 4, 5, 6}) ? " ✅" : " ❌"));
         } catch (Exception e) { System.out.println("Ej3: ⬜ No implementado"); }
 

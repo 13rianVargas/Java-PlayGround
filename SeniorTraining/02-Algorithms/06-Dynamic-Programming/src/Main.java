@@ -76,7 +76,7 @@ public class Main {
 
 
         // ─────────────────────────────────
-                Knapsack (Mochila)
+        // 5) Knapsack (Mochila)
         // ─────────────────────────────────
         System.out.println("\n--- 5) 0/1 Knapsack ---");
 
@@ -88,13 +88,8 @@ public class Main {
         System.out.println("Valores:  " + Arrays.toString(values));
         System.out.println("Capacidad: " + capacity);
         System.out.println("Máximo valor: " + knapsack(weights, values, capacity));
-        // Tomar items 1 y 3 (peso=3+5=8, val
-            r=4+6=10) → 10
-        
+        // Tomar items 1 y 3 (peso=3+5=8, valor=4+6=10) → 10
 
-        
-            
-        
 
         // ─────────────────────────────────
         // RESUMEN
@@ -160,7 +155,8 @@ public class Main {
         return dp[m][n];
     }
 
-    static int kadane(int[] arr) {int maxEndingHere = arr[0];
+    static int kadane(int[] arr) {
+        int maxEndingHere = arr[0];
         int maxSoFar = arr[0];
 
         for (int i = 1; i < arr.length; i++) {
@@ -179,7 +175,6 @@ public class Main {
                 // No tomar item i
                 dp[i][w] = dp[i - 1][w];
 
-        // 
                 // Tomar item i (si cabe)
                 if (weights[i - 1] <= w) {
                     dp[i][w] = Math.max(dp[i][w],
@@ -190,5 +185,4 @@ public class Main {
 
         return dp[n][capacity];
     }
-}  
-           
+}

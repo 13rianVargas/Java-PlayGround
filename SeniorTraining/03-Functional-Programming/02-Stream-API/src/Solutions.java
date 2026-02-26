@@ -8,26 +8,16 @@ public class Solutions {
     record Employee(String name, String dept, double salary, int yearsExp) {}
 
     static List<Transaction> transactions = List.of(
-    
-
-        new Transaction("T001", "CREDIT",  1500.00, "USD", true)
-    ,
+        new Transaction("T001", "CREDIT",  1500.00, "USD", true),
         new Transaction("T002", "DEBIT",    200.50, "USD", true),
         new Transaction("T003", "CREDIT",  3000.00, "EUR", true),
-            500.00, "USD", false),
-            800.00, "USD", true),
-            200.00, "EUR", true),
+        new Transaction("T004", "DEBIT",    500.00, "USD", false),
+        new Transaction("T005", "CREDIT",   800.00, "USD", true),
+        new Transaction("T006", "DEBIT",    200.00, "EUR", true),
         new Transaction("T007", "DEBIT",   9000.00, "USD", false),
-        
-
         new Transaction("T008", "CREDIT",   450.00, "COP", true),
-        
-
         new Transaction("T009", "TRANSFER", 300.00, "USD", true),
-        
-
         new Transaction("T010", "CREDIT",  7500.00, "EUR", true)
-        
     );
 
     static List<Employee> employees = List.of(
@@ -37,16 +27,13 @@ public class Solutions {
         new Employee("Diana",   "Finance",     90000, 4),
         new Employee("Eve",     "Marketing",   75000, 2),
         new Employee("Frank",   "Engineering", 105000, 7),
-            000, 1),
+        new Employee("Grace",   "Marketing",   68000, 1),
         new Employee("Henry",   "Finance",     125000, 12)
     ); 
 
-    // ─── Sol E1 ───────
-            // ──────────────────────────────────────────────────
-    static double total
-            cessfulUSD() {
-        return transactions
-            stream()
+    // ─── Sol E1 ──────────────────────────────────────────────────────────
+    static double totalSuccessfulUSD() {
+        return transactions.stream()
             .filter(Transaction::success)
             .filter(t -> "USD".equals(t.currency()))
             .mapToDouble(Transaction::amount)
@@ -62,7 +49,7 @@ public class Solutions {
             .sorted()
             .collect(Collectors.toList());
     }
-                        
+
     // ─── Sol E3 ──────────────────────────────────────────────────────────
     static Map<String, Double> averageAmountByType() {
         return transactions.stream()
@@ -75,15 +62,13 @@ public class Solutions {
         return transactions.stream()
             .filter(Transaction::success)
             .max(Comparator.comparingDouble(Transaction::amount))
-    
             .map(Transaction::id)
             .orElse("N/A");
     }
-                 retorna Optional<Transa
-                Transaction::id) transforma Optional<Transaction> → Optional<String>
+    // .max() retorna Optional<Transaction>
+    // .map(Transaction::id) transforma Optional<Transaction> → Optional<String>
     // .orElse("N/A") desenvuelve con default
 
-            
     // ─── Sol E5 ──────────────────────────────────────────────────────────
     static Map<String, List<String>> seniorsByDepartment() {
         return employees.stream()

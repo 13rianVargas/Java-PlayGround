@@ -37,215 +37,141 @@ static class AccountServiceBAD {
 }
 
 /**
- * ✅ SRP CORRECTO — Cada clase tiene UNA responsabilidad: 
- * 
- * ic class InterestCalculator {
- *  
- *         return balance.multiply(rate).setSca
- *     }
- * 
- * 
- * 
- * boolean hasSufficientFunds(BigDecimal balance, BigDecimal amoun
- * return balance.compareTo(amou
- * 
- * 
- * 
- * ic class AccountReportFormatter {
- * ng format(String accountId, BigDeci
- * return String.format("Account %s: $%
- * 
- * 
- * 
- * ═════════════════════════════════════════════════════════════════════
- * .
- * 
- * ═════════════════════════════════════════════════════════════════════════
- * 
- * 
- * 
- *  * ❌ VIOLACIÓN OCP — Cada nuevo ti
- *  */
- * ic BigDecimal calculateInterestBAD(St
- * 
- *     case "SAVINGS" -> balance.multiply(new BigDecimal("0.04"));
- * 
- *     // Cada nuevo tipo → modificar este switch. Viola OCP.
- * default -> BigDecimal.ZERO;
- * 
- * 
- * 
- * 
- * 
- *  
- * 
- * interface InterestPolicy {
- *     BigDecimal calculateInterest(BigDecimal balance);
- * 
- * 
- * 
- * 
- *     public BigDecimal calculateInterest(BigDecimal balance) {
- *         return balanc
- *    
- * } 
- * 
- * sta
-    public BigDecimal calculateInterest(BigDecimal balance
-        return balance.multiply(new BigDecimal("0.01")).setScale(2, 
-   
-}
-    
-    uevo tipo: solo agrega una 
-    ic class PremiumInterest i
-    public BigDecimal calculateIntere
-        // Premium: 5% base + bonus si ba
-        BigDecimal base = balance.
-        if (balance.compareTo(new
-            base = base.add(new BigD
-
-        return base.setScale(2, Roundi
-        
-        
-        
-        ═══════════════════════════════
-        P — Liskov Substitution Principle
-        i S es subtipo de T, entonces obj
-        er reemplazados por objetos d
-        ═════════════════════════════════════════════════════════════════════
-    
-
-     VIOLACIÓN
-    
-        
-    
-
-    ic class BankAccoun
-         {
-    
-
-    protected BigDecim
-        l balance;
-    
-
-    BankAccount(BigDecimal ba
-        ance) { this.ba
-    a
-
-    void deposit(BigDecimal amoun
-        ) { balance = balan
-    e
-
-    void withdraw(BigDecim
-        l amount) { bala
-    c
-
-    BigDecimal getBalanc
-        () { return ba
-    a
-
-    
-        
-    
-
-    ic class 
-    ReadOnlyAccountBAD(BigDeci
-        rride
-                w(BigDecimal amount) {
-     
-
-    }
-    
-        
-        
-         CORRECTO — Separar interfa
-
-        e Depositable {
-         deposit(BigDecimal amount);
-        ecimal getBalance();
-        
-        
-        e Withdrawable extends Deposit
-         withdraw(BigDecimal amount);
-
-        
-             FullAccount implements Withdrawable {
-            BigDecimal balance;
-        A
-
-        ic void withdraw(BigDecimal
-            amount) { balance
-            = balance.su
-        t
-
-        ic BigDecimal getBalance() { return b
-            lance; }
-            
-        
-
-        
-            
-            
-        
-
-        
-            
-            
-        
-
-        lass DepositOnlyAccount implemen
-            s Depositable {
-            
-        
-
-        ate BigDecimal balance;
-            
-            
-        
-
-        sitOnlyAccount(Bi
-            oid deposit(BigDecimal amoun
-            igDecimal getBalance() { return balance; }
-                withdraw → no puede romper ningún contrato.
-            
-            
-        ═
-    .
-/
-
-
-/**
- * IOLACIÓN ISP — Una interfaz "gorda" que obliga a todos a implementar tod
-// .
+ * ✅ SRP CORRECTO — Cada clase tiene UNA responsabilidad:
  */
-
-   
-    void applyInterest();
-    void generateReport();
- * vo
- * }
- 
-   
-/**
-     ISP CORRECTO — Interfaces peque
-
-    
-i
-
-    void withdraw(BigDecima
-    
-
-
-    void applyInterest
-    
-
-
-    String generateReport();  
-    }  
-  
-    interface Notifiable {  
-        void sendNotification(String message);
+static class InterestCalculator {
+    BigDecimal calculate(BigDecimal balance, BigDecimal rate) {
+        return balance.multiply(rate).setScale(2, RoundingMode.HALF_UP);
     }
+}
+
+static class TransferValidator {
+    boolean hasSufficientFunds(BigDecimal balance, BigDecimal amount) {
+        return balance.compareTo(amount) >= 0;
+    }
+}
+
+static class AccountReportFormatter {
+    String format(String accountId, BigDecimal balance) {
+        return String.format("Account %s: $%s", accountId, balance);
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// 2. OCP — Open/Closed Principle
+//    "Abierto para extensión, cerrado para modificación."
+// ══════════════════════════════════════════════════════════════════════════
+
+/**
+ * ❌ VIOLACIÓN OCP — Cada nuevo tipo requiere modificar el switch.
+ */
+// static BigDecimal calculateInterestBAD(String type, BigDecimal balance) {
+//     return switch (type) {
+//         case "SAVINGS" -> balance.multiply(new BigDecimal("0.04"));
+//         default -> BigDecimal.ZERO;
+//     };
+// }
+
+/**
+ * ✅ OCP CORRECTO — Nuevos tipos = nuevas clases, sin modificar existentes.
+ */
+interface InterestPolicy {
+    BigDecimal calculateInterest(BigDecimal balance);
+}
+
+static class SavingsInterest implements InterestPolicy {
+    public BigDecimal calculateInterest(BigDecimal balance) {
+        return balance.multiply(new BigDecimal("0.04")).setScale(2, RoundingMode.HALF_UP);
+    }
+}
+
+static class CheckingInterest implements InterestPolicy {
+    public BigDecimal calculateInterest(BigDecimal balance) {
+        return balance.multiply(new BigDecimal("0.01")).setScale(2, RoundingMode.HALF_UP);
+    }
+}
+
+// Nuevo tipo: solo agrega una nueva clase.
+static class PremiumInterest implements InterestPolicy {
+    public BigDecimal calculateInterest(BigDecimal balance) {
+        BigDecimal base = balance.multiply(new BigDecimal("0.05"));
+        if (balance.compareTo(new BigDecimal("10000")) > 0) {
+            base = base.add(new BigDecimal("100"));
+        }
+        return base.setScale(2, RoundingMode.HALF_UP);
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// 3. LSP — Liskov Substitution Principle
+//    "Si S es subtipo de T, entonces objetos de T pueden
+//     ser reemplazados por objetos de S sin alterar el comportamiento."
+// ══════════════════════════════════════════════════════════════════════════
+
+static class BankAccount {
+    protected BigDecimal balance;
+
+    BankAccount(BigDecimal balance) { this.balance = balance; }
+    void deposit(BigDecimal amount) { balance = balance.add(amount); }
+    void withdraw(BigDecimal amount) { balance = balance.subtract(amount); }
+    BigDecimal getBalance() { return balance; }
+}
+
+/**
+ * ✅ LSP CORRECTO — Separar interfaces para que subtipos cumplan contratos.
+ */
+interface Depositable {
+    void deposit(BigDecimal amount);
+    BigDecimal getBalance();
+}
+
+interface Withdrawable extends Depositable {
+    void withdraw(BigDecimal amount);
+}
+
+static class FullAccount implements Withdrawable {
+    private BigDecimal balance;
+
+    FullAccount(BigDecimal balance) { this.balance = balance; }
+    public void deposit(BigDecimal amount) { balance = balance.add(amount); }
+    public void withdraw(BigDecimal amount) { balance = balance.subtract(amount); }
+    public BigDecimal getBalance() { return balance; }
+}
+
+static class DepositOnlyAccount implements Depositable {
+    private BigDecimal balance;
+
+    DepositOnlyAccount(BigDecimal balance) { this.balance = balance; }
+    public void deposit(BigDecimal amount) { balance = balance.add(amount); }
+    public BigDecimal getBalance() { return balance; }
+    // No withdraw → no puede romper ningún contrato.
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// 4. ISP — Interface Segregation Principle
+//    "Los clientes no deben verse forzados a depender de interfaces
+//     que no utilizan."
+// ══════════════════════════════════════════════════════════════════════════
+
+/**
+ * ✅ ISP CORRECTO — Interfaces pequeñas y específicas.
+ */
+interface TransactionCapable {
+    void deposit(BigDecimal amount);
+    void withdraw(BigDecimal amount);
+}
+
+interface InterestBearing {
+    void applyInterest();
+}
+
+interface Reportable {
+    String generateReport();
+}
+
+interface Notifiable {
+    void sendNotification(String message);
+}
 
     // Cada Account implementa lo que NECESITA:
     static class SavingsAccount implements TransactionCapable, InterestBearing, Reportable {

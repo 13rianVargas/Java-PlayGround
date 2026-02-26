@@ -30,7 +30,7 @@ public class Solutions {
      * Clave: la lambda captura el formato del string.
      */
     public static Function<Account, String> accountSummary() {
-        re n a -> "ID: " + a.id() + " | Type: " + a.type() + " | Balance: $" + a.balance();
+        return a -> "ID: " + a.id() + " | Type: " + a.type() + " | Balance: $" + a.balance();
     }
 
     /**
@@ -54,7 +54,7 @@ public class Solutions {
      * a) Stream: validations.stream().allMatch(pred -> pred.test(account))
      * b) Reduce: validations.stream().reduce(Predicate::and) → combinado.test(account)
      */
-                 validateAll(Account account,
+    public static boolean validateAll(Account account,
                                        List<Predicate<Account>> validations) {
         // Enfoque a) — más legible
         return validations.stream().allMatch(pred -> pred.test(account));
@@ -65,9 +65,6 @@ public class Solutions {
         //         .test(account);
     }
 
-        
-            
-        
     /**
      * EJERCICIO 5: Comparator multicriteria con lambdas.
      *
@@ -104,31 +101,3 @@ public class Solutions {
         System.out.println("Ej5 first: " + sortAccounts(accounts).get(0).id()); // A4
     }
 }
-
-            
-        
-
-        
-            
-         
-    
-            
-        
-
-        
-            
-        
-
-        
-            
-        
-                
-                
-            
-
-            
-
-            
-                
-                
-            

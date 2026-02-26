@@ -12,26 +12,16 @@ public class Exercises {
     // Dado un entero no negativo n, retorna la parte entera de su raíz.
     // Ejemplo: n=8  → 2  (porque 2² = 4 ≤ 8 < 9 = 3²)
     // Ejemplo: n=4  → 2
-    
     // Ejemplo: n=0  → 0
     // Ejemplo: n=1  → 1
-    
     //
-    // ⚠️ NO usar Math.sqrt(). Impleméntalo con binary search.
-             el rango [0, n].
-            // ───────────────────────────────
-            
+    // ⚠️ NO usar Math.sqrt(). Impleméntalo con binary search en el rango [0, n].
+    // ─────────────────────────────────────────────────────────────────────
+    static int mySqrt(int n) {
         // TODO
-        
-
         return 0;
-        
+    }
 
-        
-        
-
-        
-        
     // ─────────────────────────────────────────────────────────────────────
     // E2 — Contar ocurrencias en array ordenado
     //
@@ -49,7 +39,7 @@ public class Exercises {
     }
 
     // ─────────────────────────────────────────────────────────────────────
-            
+    // E3 — Búsqueda en rango
     //
     // Dado un array ORDENADO, un target, y un rango [from, to) (exclusivo),
     // retorna true si target existe dentro del rango especificado.
@@ -58,11 +48,10 @@ public class Exercises {
     // Ejemplo: arr=[1,2,3,4,5], target=3, from=3, to=5 → false (índice 2 NO está en [3,5))
     //
     // 💡 Arrays.binarySearch tiene una sobrecarga: binarySearch(arr, from, to, key)
-    // ─────────────── ───────────────────────────────────────
-    static boolean existsInRange(i ] arr, int target, int from, int to) {
-     * 
-        // TODO 
-        return false; 
+    // ─────────────────────────────────────────────────────────────────────
+    static boolean existsInRange(int[] arr, int target, int from, int to) {
+        // TODO
+        return false;
     }
 
     // ─────────────────────────────────────────────────────────────────────
@@ -75,7 +64,6 @@ public class Exercises {
     // Ejemplo:
     //   [[1,  3,  5,  7 ],
     //    [10, 11, 16, 20],
-    
     //    [23, 30, 34, 60]]
     //   target=3  → true
     //   target=13 → false

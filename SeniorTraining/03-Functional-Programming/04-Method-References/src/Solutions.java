@@ -45,7 +45,6 @@ public class Solutions {
      * EJERCICIO 3: map + forEach con method references.
      *
      * No se puede hacer en un solo method reference porque
-    
      * necesitamos transformar Y luego imprimir.
      */
     public static void printAll(List<Employee> employees) {
@@ -54,28 +53,18 @@ public class Solutions {
                 .forEach(System.out::println);     // instance method ref
     }
 
-                
+
+    /**
      * EJERCICIO 4: Comparator.comparing con method ref.
      */
     public static List<Employee> sortByName(List<Employee> employees) {
         return employees.stream()
-                .sorted(Comparator.comparing(Employee::name)) // method ref como key extractor
+                .sorted(Comparator.comparing(Employee::name))
                 .collect(Collectors.toList());
     }
-            
-        
 
-        
-            
-        
-
-        
-            
-        
-
-        JERCICIO 5: Constructor referenc
-             en toCollection.
-        
+    /**
+     * EJERCICIO 5: Constructor reference en toCollection.
      * TreeSet::new equivale a () -> new TreeSet<>()
      */
     public static TreeSet<String> uniqueDepartments(List<Employee> employees) {
@@ -99,31 +88,3 @@ public class Solutions {
         System.out.println("Ej5 depts: " + uniqueDepartments(employees));        // [HR, TECH]
     }
 }
-
-            
-        
-
-        
-            
-         
-    
-            
-        
-
-        
-            
-        
-
-        
-            
-        
-                
-                
-            
-
-            
-
-            
-                
-                
-            

@@ -30,7 +30,7 @@ public class Solutions {
 
         // Deslizar: entra arr[i], sale arr[i-k]
         for (int i = k; i < arr.length; i++) {
-           indowSum += arr[i] - arr[i - k];
+           windowSum += arr[i] - arr[i - k];
             maxSum = Math.max(maxSum, windowSum);
         }
 
@@ -45,7 +45,6 @@ public class Solutions {
      * - right avanza siempre.
      * - Si hay duplicado, left avanza hasta eliminar el duplicado.
      *
-    
      * Complejidad: O(n) tiempo, O(min(n, charset)) espacio
      */
     public static int longestUniqueSubstring(String s) {
@@ -54,7 +53,7 @@ public class Solutions {
         Set<Character> window = new HashSet<>();
         int left = 0;
         int maxLen = 0;
-                
+
         for (int right = 0; right < s.length(); right++) {
             while (window.contains(s.charAt(right))) {
                 window.remove(s.charAt(left));
@@ -64,13 +63,7 @@ public class Solutions {
             maxLen = Math.max(maxLen, right - left + 1);
         }
 
-        
-            
-        
-
         return maxLen;
-            
-        
     }
 
 
@@ -118,13 +111,8 @@ public class Solutions {
         for (int i = 0; i < arr.length; i++) {
             if (window.contains(arr[i])) return true;
             window.add(arr[i]);
-            if (window.size()
-            > k) {
-        
-
-                window.remove(arr[i - k]); /
-             sale el más 
-        ntiguo
+            if (window.size() > k) {
+                window.remove(arr[i - k]); // sale el más antiguo
             }
         }
 
@@ -145,11 +133,10 @@ public class Solutions {
      * NOTA SENIOR: Este NO es sliding window puro, pero usa la misma
      * filosofía de "mantener estado mientras recorremos". Se incluye
      * porque aparece frecuentemente junto a problemas de ventana.
-     * 
+     */
     public static int subarraySum(int[] arr, int k) {
         if (arr == null) return 0;
 
-    
         Map<Integer, Integer> prefixCount = new HashMap<>();
         prefixCount.put(0, 1); // base case: suma vacía
         int currentSum = 0;
@@ -165,7 +152,7 @@ public class Solutions {
         return count;
     }
 
-── Verificación ───
+    // ─── Verificación ───
     public static void main(String[] args) {
         System.out.println("=== SLIDING WINDOW — Soluciones ===\n");
 
@@ -177,23 +164,3 @@ public class Solutions {
         System.out.println("Ej5: " + subarraySum(new int[]{1, 1, 1}, 2));                  // 2
     }
 }
-            
-        
-
-        
-            
-        
-
-        
-            
-        
-                
-                
-            
-
-            
-
-            
-                
-                
-            

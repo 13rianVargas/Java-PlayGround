@@ -45,7 +45,6 @@ public class Solutions {
         Arrays.fill(dp, amount + 1); // "infinito"
         dp[0] = 0;
 
-    
         for (int i = 1; i <= amount; i++) {
             for (int coin : coins) {
                 if (coin <= i) {
@@ -54,28 +53,17 @@ public class Solutions {
             }
         }
 
-                 > amount ? -1 : dp[amount];
+        return dp[amount] > amount ? -1 : dp[amount];
     }
 
     /**
      * EJERCICIO 3: Maximum Subarray (Kadane's).
      *
      * INSIGHT: En cada posición, decidimos:
-     *   - Extender el subarray
-            actual (maxEnding
-        e
-
-         - Empezar uno nuevo
-            (arr[i])
-        
-
-        
-            
-        
-
-        omplejidad: O(n) tiempo, O(1) es
-            acio
-        
+     *   - Extender el subarray actual (maxEndingHere + arr[i])
+     *   - Empezar uno nuevo (arr[i])
+     *
+     * Complejidad: O(n) tiempo, O(1) espacio
      *
      * NOTA SENIOR: Este es EL algoritmo O(n) más pedido en pruebas.
      */
@@ -124,12 +112,7 @@ public class Solutions {
     }
 
     /**
-            
-        
-
-        JERCICIO 5: Can Sum.
-            
-        
+     * EJERCICIO 5: Can Sum.
      *
      * dp[i] = true si es posible formar la suma i.
      * dp[0] = true (base).
@@ -150,11 +133,9 @@ public class Solutions {
             }
         }
 
-       rget];
+        return dp[target];
     }
 
-
-    
     // ─── Verificación ───
     public static void main(String[] args) {
         System.out.println("=== DYNAMIC PROGRAMMING — Soluciones ===\n");
@@ -169,24 +150,3 @@ public class Solutions {
         System.out.println("Ej5 (target=7, [2,4]): " + canSum(7, new int[]{2, 4}));         // false
     }
 }
-
-            
-        
-
-        
-            
-        
-
-        
-            
-        
-                
-                
-            
-
-            
-
-            
-                
-                
-            
